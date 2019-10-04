@@ -3,7 +3,7 @@
 
 <script>
     function computerPlay() {
-        const computerSelection = "";
+        let computerSelection = "";
         const randNum = Math.floor((Math.random() * 2) + 1);
 
         if (randNum == 1) {
@@ -16,54 +16,59 @@
     }
 
     function playRound(playerSelection, computerSelection) {
-        if (playerSelection === "rock") {
+        if (playerSelection == computerSelection) {
+            console.log("It's a draw!");
+
+        } else if (playerSelection === "rock") {
             if (computerSelection === "paper") {
-                console.log(computerSelection + " beats " + playerSelection + "!");
+                console.log(computerSelection + " beats " + playerSelection + ", you lose!");
             } else {
-                console.log(playerSelection + " beats " + computerSelection + "!");
+                console.log(playerSelection + " beats " + computerSelection + ", you win!");
             }
 
         } else if (playerSelection === "paper") {
             if (computerSelection === "rock") {
-                console.log(playerSelection + " beats " + computerSelection + "!");
+                console.log(playerSelection + " beats " + computerSelection + ", you win!");
             } else {
-                console.log(computerSelection + " beats " + playerSelection + "!");
+                console.log(computerSelection + " beats " + playerSelection + ", you lose!");
             }
 
         } else if (playerSelection === "scissors") {
             if (computerSelection === "rock") {
-                console.log(computerSelection + " beats " + playerSelection + "!");
+                console.log(computerSelection + " beats " + playerSelection + ", you lose!");
             } else {
-                console.log(playerSelection + " beats " + computerSelection + "!");
+                console.log(playerSelection + " beats " + computerSelection + ", you win!");
             }
         }
     }
 
-    function game() {
+    function rockPaperScissors() {
         let playerSelection = "";
         let computerSelection = "";
         let gameCounter = 0;
 
         console.log("Let's play rock, paper, scissors!");
         do {
-        Selection:
-            playerSelection = prompt("Please enter rock, paper, or scissors").toLowerCase();
+            playerSelection = prompt("Please enter rock, paper, or scissors");
+            /*
             if (playerSelection != "rock" || playerSelection != "paper" || playerSelection != "scissors") {
                 console.log("Enter a valid option.");
-                continue Selection;
+                continue;
             }
-            
+            */
             computerSelection = computerPlay();
+            /*
             if (playerSelection.toLowerCase === computerSelection.toLowerCase) {
                 console.log("It's a draw! shoot again.");
-                continue Selection;
+                continue;
             }
-
+            */
             playRound(playerSelection, computerSelection);
             ++gameCounter;
 
         } while (gameCounter != 5);
     }
 
+    rockPaperScissors();
 </script>
 </html>
